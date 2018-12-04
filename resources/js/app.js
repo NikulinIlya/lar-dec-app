@@ -9,14 +9,21 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import moment from 'moment';
-import { Form, HasError, AlertError } from 'vform'
 
+import { Form, HasError, AlertError } from 'vform'
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
-import VueRouter from 'vue-router'
-Vue.use(VueRouter);
+import swal from 'sweetalert2'
+window.swal = swal;
+const toast = swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+window.toast = toast;
 
 import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
@@ -25,11 +32,13 @@ Vue.use(VueProgressBar, {
     height: '3px'
 });
 
+import VueRouter from 'vue-router'
+Vue.use(VueRouter);
+
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue') },
     { path: '/users', component: require('./components/Users.vue') },
     { path: '/profile', component: require('./components/Profile.vue') }
-
 ];
 
 const router = new VueRouter({
@@ -44,6 +53,7 @@ Vue.filter('upText', function (text) {
 Vue.filter('myDate', function (created) {
     return moment(created).format('MMMM Do YYYY');
 });
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -52,7 +62,7 @@ Vue.filter('myDate', function (created) {
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
