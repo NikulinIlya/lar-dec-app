@@ -9,6 +9,8 @@ use App\User;
 
 class UserController extends Controller
 {
+
+
     /**
      * Create a new controller instance.
      *
@@ -16,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('api');
+        $this->middleware('auth:api');
     }
 
     /**
