@@ -160,9 +160,24 @@
             console.log('Component mounted.')
         },
         methods: {
+            updateInfo() {
+                this.form.put('api/profile')
+                    .then(() => {
+
+                    })
+                    .catch(() => {
+
+                    });
+            },
             updateProfile(e) {
+                let file = e.target.files[0];
+                let reader = new FileReader();
 
-
+                reader.onloadend = (file) => {
+                    // console.log('RESULT', reader.result)
+                    this.form.photo = reader.result;
+                };
+                reader.readAsDataURL(file);
             }
         },
         created() {
