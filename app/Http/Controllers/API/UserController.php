@@ -6,6 +6,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -28,7 +29,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(20);
+        if (Gate::allows('isAdmin') || Gate::allows('isAuthor')) {
+            return User::latest()->paginate(20);
+        }
     }
 
     /**
