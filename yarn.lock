@@ -3710,6 +3710,13 @@ laravel-mix@^2.0:
     webpack-notifier "^1.5.1"
     yargs "^8.0.2"
 
+laravel-vue-pagination@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/laravel-vue-pagination/-/laravel-vue-pagination-2.2.0.tgz#bd55e9c76650274b1b89850d7b02c25aa565adec"
+  integrity sha512-zjhQNvaC+v1kcMULsHeBIWdR5MTaKLjTptBECA4dYYrVrVKXzl0EddmiHwb0I4lmekQgWAPORiJaJGTB9GjrGw==
+  dependencies:
+    vue "^2.5.17"
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
